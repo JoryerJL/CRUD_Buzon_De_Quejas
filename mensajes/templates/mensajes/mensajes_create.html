@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block main %}
+    <h1>Crear Mensaje</h1>
+    <br>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input class="btn btn-outline-success" type="submit" name="Enviar">
+        </form>
+{% endblock %}
