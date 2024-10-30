@@ -32,3 +32,20 @@ def mensajes_create(request):
 def mensajes_delete(request, pk):
     Mensaje.objects.get(pk=pk).delete()
     return redirect(mensajes_list)
+
+def mensajes_update(request, pk):
+    mensaje = Mensaje.objects.get(pk=pk)
+    form = mensajesModelForm(instance=mensaje)
+    if request.method == 'POST':
+        form = mensajesModelForm(request.POST, instance=mensaje)
+        if form.is_valid():
+            form.save()
+            return redirect(mensajes_list)
+    else:
+        print(form.errors)
+    context = {
+        'form': form,
+        'titulo': 'Editar Mensaje'
+    }
+
+    return render(request, 'mensajes/mensajes_create.html', context)

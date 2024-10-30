@@ -9,10 +9,10 @@
                 <div class="col-sm" style="margin-bottom: 6px">
                     <div class="card" style="width: 18rem;">
                         <div class="card-body">
-                            <h5 class="card-title">Queja {{ mensaje.id }}</h5>
+                            <h5 class="card-title">Queja {{ forloop.counter }}</h5>
                             <span >{{ mensaje.fecha }}</span>
                             <p class="card-text"> {{ mensaje.mensaje }}</p>
-                            <a href="#" class="btn btn-primary">Detalles</a>
+                            <a href="{% url 'update' mensaje.pk %}" class="btn btn-primary">Actualizar</a>
                             <a href="{% url "delete" mensaje.pk %}" class="btn btn-danger">Borrar</a>
                         </div>
                     </div>
